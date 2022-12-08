@@ -1,0 +1,18 @@
+version: 0.0
+os: linux
+files:
+  - source:  /
+    destination: /home/ubuntu/action
+    overwrite: yes
+
+permissions:
+  - object: /
+    pattern: "**"
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  ApplicationStart:
+    - location: scripts/deploy.sh # 스크립트 폴더를 생성한 후 디렉토리 내부에 deploy.sh 파일을 생성한다.
+      timeout: 60
+      runas: ubuntu
